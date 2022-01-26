@@ -4,7 +4,7 @@
 # No more need for a detached terminal taking up your screen space
 
 # Can use fzf instead, and probably rofi, bemenu etc aswell
-LAUNCHER="dmenu -l 50"
+LAUNCHER="dmenu -i -l 50"
 
 cd "$HOME"/Videos
 
