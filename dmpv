@@ -8,4 +8,4 @@ LAUNCHER="dmenu -i -l 50"
 
 cd "$HOME"/Videos
 
-mpv "$(stest -- * | $LAUNCHER)"
+mpv "$(stest -- * | awk -F "/" '{print $NF}' | $LAUNCHER)"
