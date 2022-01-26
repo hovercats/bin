@@ -17,3 +17,7 @@ Overview
   - dmpv
     - Play videos in ~/Videos in mpv from dmenu
     - Similarly to bmks, it probably works with fzf, rofi etc aswell.
+
+  - dsearch
+    - search the web with dmenu
+    - only handles searchstrings currently
