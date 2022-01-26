@@ -1,11 +1,14 @@
 #!/bin/sh -e
 
-# A tiny script for launcing videos inside Videos dir with mpv
+# A tiny script for launching videos inside Videos dir with mpv
 # No more need for a detached terminal taking up your screen space
 
 # Can use fzf instead, and probably rofi, bemenu etc aswell
 LAUNCHER="dmenu -i -l 50"
 
-cd "$HOME"/Videos
+# set DIR variable to whatever floats your boat
+DIR="$HOME"/Videos
+
+cd "$DIR"
 
 mpv "$(stest -- * | awk -F "/" '{print $NF}' | $LAUNCHER)"
