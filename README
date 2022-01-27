@@ -9,7 +9,7 @@ Overview
 
   - bmks
     - A browser independent bookmark script. 
-    - Can use dmenu and fzf, and probably rofi and bemnu etc aswell
+    - Can use dmenu and fzf, and probably rofi and bemenu etc aswell
     - Originally published on the Suckless website, but it was written in bash,
       so I ran shellcheck on it, and corrected it accordingly. Should now be
       posix.
