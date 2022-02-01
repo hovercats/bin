@@ -3,7 +3,7 @@
 # A simple bookmarking script that uses dmenu
 
 file_path="$HOME/.config/bmks/"
-filename=urls
+filename=urls2
 bookmarks="$file_path/$filename"
 browser=surf
 launcher=dmenu
@@ -56,7 +56,7 @@ bmks_check () {
 }
 
 [ ! -d "$file_path" ] && mkdir -p "$file_path"
-[ ! -f "$filename" ] && :> "$file_path/$filename" 
+[ ! -f "$filename" ] && touch "$file_path/$filename" 
 
 case "$1" in
     help) usage ;;
