@@ -3,7 +3,7 @@
 # A simple bookmarking script that uses dmenu
 
 file_path="$HOME/.config/bmks/"
-filename=urls2
+filename=urls
 bookmarks="$file_path/$filename"
 browser=surf
 launcher=dmenu
