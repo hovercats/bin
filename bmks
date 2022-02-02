@@ -20,8 +20,6 @@ bmks del
   remove a bookmark
 bmks ls
   list bookmarks
-bmks fzf
-  use fzf instead of dmenu
 
 Configuration is done directly in script by editing the variables.
 "
