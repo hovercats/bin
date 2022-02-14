@@ -24,5 +24,7 @@ Overview
   - bri
     - Change screen brightness
     - Requires path to brightness file
-      - Exists in /sys/class/backlight
+      - Exists in /sys/class/backlight/*
       - Must have read/write access to said file
+        - Permission for this file doesnt persist across reboots, so creating a
+          script that sets correct permissions on boot is required.
