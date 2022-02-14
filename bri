@@ -17,7 +17,7 @@ decrease () {
 }
 
 help () {
-    echo "Useage:\nUse 'd' or 'i' to decrease or increase screen brightness"
+    printf "Useage:\n\nUse 'd' or 'i' to decrease or increase screen brightness"
 }
 
 case $1 in
