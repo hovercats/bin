@@ -18,5 +18,11 @@ Overview
     - Similarly to bmks, it probably works with fzf, rofi etc aswell.
 
   - dsearch
-    - search the web with dmenu
-    - only handles searchstrings currently
+    - Search the web with dmenu
+    - Only handles searchstrings currently
+
+  - bri
+    - Change screen brightness
+    - Requires path to brightness file
+      - Exists in /sys/class/backlight
+      - Must have read/write access to said file
