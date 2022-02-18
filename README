@@ -43,4 +43,8 @@ Overview
       etc, without killing the xorg-session.
 
  
- 
+The following scripts require wmutils[0] to work:
+  - groups.sh
+  - workspace.sh
+
+[0] https://github.com/wmutils/core
