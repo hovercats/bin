@@ -2,6 +2,14 @@ Scripts
 -------
 
 A repo containing some scripts I use.
+Please read all scrips before using them.
+I may not be the author of all the scripts here, if thats the case, the original
+author is likely listed in the script.
+
+All scripts should pass shellcheck without issues, so portabilty should
+not be of any concern.
+If the script does not pass shellcheck, I will be modifying it so that it does.
+An issue should be present if a script is added, and does not pass shellcheck.
 
 
 Overview
@@ -28,3 +36,11 @@ Overview
       - Must have read/write access to said file
         - Permission for this file doesnt persist across reboots, so creating a
           script that sets correct permissions on boot is required.
+
+  - holup
+    - A script that just waits.
+    - Usefull for launching an xorg-session without a WM, or restart your WM
+      etc, without killing the xorg-session.
+
+ 
+ 

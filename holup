@@ -1,0 +1,4 @@
+#!/bin/sh -e
+
+# just wait a bit
+while :; do sleep 86400 & wait ; done
