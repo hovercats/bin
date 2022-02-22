@@ -1,0 +1,20 @@
+#!/bin/sh -e
+
+# Simple script which changes your wallpaper on set amount of time.
+
+cd "$HOME"/wallpapers
+
+while :
+do
+    set -- *
+    n=$(echo $# | awk '{srand(); print int(rand()*$0) + 1}')
+    eval "wall=\$$n"
+    # shellcheck disable=2154
+    bgs "$wall"
+    sleep 300
+done
+
+
+# I wasnt sure as to how to create the random generator without using shuf,
+# so Ive found this for reference:
+# https://stackoverflow.com/a/6747490 
