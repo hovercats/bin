@@ -35,7 +35,7 @@ FSDIR=${FSDIR:-/tmp/groups.sh}
 # clean WID ($1) from group files
 clean_wid() {
     t=$(mktemp /tmp/groups.XXXXXX)
-    for x in $(ls "$FSDIR"/group.*); do
+    for x in "$FSDIR"/group.*; do
         sed "/$1/d" "$x" >"$t"
         mv "$t" "$x"
     done
