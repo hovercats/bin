@@ -222,5 +222,7 @@ while getopts "hc:Cs:t:m:M:u:U" opt; do
             done
             break
             ;;
+        *) 
+            echo "Unrecognized option. use h flag to show usage"
     esac
 done
