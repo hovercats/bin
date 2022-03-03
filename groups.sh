@@ -153,15 +153,17 @@ cleanup_everything() {
         fi
     done
 
+    cp "$FSDIR"/all "$FSDIR"/tmpall
     # remove groups that don't exist from 'all'
     while read -r line; do
         if [ ! -f "$FSDIR"/group."$line" ]; then
             t=$(mktemp /tmp/groups.XXXXXX)
-            sed "/$line/d" "$FSDIR"/all >"$t"
-            mv "$t" "$FSDIR"/all
+            sed "/$line/d" "$FSDIR"/tmpall >"$t"
+            mv "$t" "$FSDIR"/tmpall
             clean_status "$line"
         fi
-    done < "$FSDIR"/all
+    done  < "$FSDIR"/all
+    mv "$FSDIR"/tmpall "$FSDIR"/all
 }
 
 # actual run logic (including arguments and such)
