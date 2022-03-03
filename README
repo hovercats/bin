@@ -19,5 +19,6 @@ The following scripts require(/is used with) wmutils[0] to work:
   - fullscreen.sh
     - depend on focus.sh
   - focus.sh
+  - tile.sh
 
 [0] https://github.com/wmutils/core
