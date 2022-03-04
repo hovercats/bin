@@ -1,0 +1,32 @@
+#!/bin/sh -e
+
+# Simple script to download videos to ~/Videos.
+# Requires yt-dlp
+
+# Set the download dir
+DLDIR="$HOME"/Videos
+
+nourl () {
+    echo "Insert url"
+    read -r url
+    yt-dlp -F "$url"
+    echo "Select quality. i.e. 248+251 or 22"
+    read -r quality
+    yt-dlp -P "$DLDIR" -f "$quality" "$url"
+}
+
+sel() {
+    # Check if an url has already been passed
+   if [ -z "$url" ]; then 
+       nourl 
+   else
+       yt-dlp -F "$url"
+       echo "Select quality. i.e. 248+251 or 22"
+       read -r quality
+       yt-dlp -P "$DLDIR" -f "$quality" "$url"
+   fi
+}
+
+case $1 in
+    *) url=$1 sel ;;
+esac
