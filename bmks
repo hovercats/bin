@@ -39,13 +39,13 @@ bmks_ls () {
 
 go_to () {
     case $launcher in
-		dmenu) sort "$bookmarks" | dmenu -i -l "$(wc -l "$bookmarks")" | awk '{print $(NF)}' | xargs -I '{}' "$browser" {} ;;
+		dmenu) sort "$bookmarks" | dmenu -i -l 10 | awk '{print $(NF)}' | xargs -I '{}' "$browser" {} ;;
     esac
 }
 
 bmks_del () {
   case "$launcher" in
-    dmenu) sed "/$(sort "$bookmarks" | dmenu -i -l "$(wc -l "$bookmarks")")/d" "$bookmarks" > _ && mv -f _ "$bookmarks" ;;
+    dmenu) sed "/$(sort "$bookmarks" | dmenu -i -l 10)/d" "$bookmarks" > _ && mv -f _ "$bookmarks" ;;
 esac
 }
 
