@@ -16,7 +16,7 @@ ENGINE='https://duckduckgo.com/?q='
 # Set search string as a variable, and remove spaces, as we cant have any spaces
 # in our URL. Also make sure the substitution is correct if you change to a
 # different search engine as they might not be the same.
-STRING=$(printf '' | dmenu -p 'Search' | sed 's/ /%20l/g')
+STRING=$(printf '' | dmenu -p 'Search' | sed 's/ /%20/g')
 
 # exit if $STRING is empty.
 if [ "$STRING" = '' ]; then
