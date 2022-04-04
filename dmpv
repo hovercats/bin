@@ -2,12 +2,24 @@
 
 # A tiny script for launching videos inside Videos dir with mpv
 # No more need for a detached terminal taking up your screen space
+# you can also delete the selected video with -d option
 
 # set DIR variable to whatever floats your boat
 DIR="$HOME"/Videos
 
-cd $DIR
-  for file in "$DIR"/*; do
+case $1 in
+  -d)
+   cd $DIR
+   for file in "$DIR"/*; do
+    [ -e "$file" ] || [ -L "$file" ] || continue
+    printf "%s\n" "$file"
+  done | awk -F "/" '{print $NF}' | dmenu -i -l 20 | xargs -I {} rm -rf {} 
+  ;;
+   *)
+   cd $DIR
+   for file in "$DIR"/*; do
     [ -e "$file" ] || [ -L "$file" ] || continue
     printf "%s\n" "$file"
   done | awk -F "/" '{print $NF}' | dmenu -i -l 20 | xargs -I {} mpv {} 
+  ;;
+esac
