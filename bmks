@@ -5,7 +5,7 @@
 file_path="$HOME/.config/bmks/"
 filename=urls
 bookmarks="$file_path/$filename"
-browser=surf
+browser=$BROWSER
 launcher=dmenu
 
 usage () {
@@ -39,7 +39,7 @@ bmks_ls () {
 
 go_to () {
     case $launcher in
-		dmenu) sort "$bookmarks" | dmenu -i -l 10 | awk '{print $(NF)}' | xargs -I '{}' "$browser" {} ;;
+      dmenu) $browser $(sort "$bookmarks" | dmenu -i -l 10 | awk '{print $(NF)}') ;;
     esac
 }
 
