@@ -6,7 +6,7 @@
 # $BROWSER will then search for that string on $ENGINE.
 
 # Change this to w/e floats your boat.
-BROWSER="surf -d"
+BROWSER=$BROWSER
 
 # You can change this to w/e searchengine you like, aslong as its similarly
 # formatted as below.
