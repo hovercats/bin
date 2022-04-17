@@ -11,11 +11,15 @@ BRI_FILE='/sys/class/backlight/amdgpu_bl0/brightness'
 CURR_BRI=$(cat "$BRI_FILE")
 
 increase () {
-    echo "$CURR_BRI" + 10 | bc > "$BRI_FILE"
+    echo "$CURR_BRI" + 10 | bc > NEW_BRI
+    cat NEW_BRI > "$BRI_FILE"
+    rm -r NEW_BRI
 }
 
 decrease () {
-    echo "$CURR_BRI" - 10 | bc > "$BRI_FILE"
+    echo "$CURR_BRI" - 10 | bc > NEW_BRI
+    cat NEW_BRI > "$BRI_FILE"
+    rm -r NEW_BRI
 }
 
 help () {
