@@ -13,13 +13,13 @@ case $1 in
    for file in "$DIR"/*; do
     [ -e "$file" ] || [ -L "$file" ] || continue
     printf "%s\n" "$file"
-  done | awk -F "/" '{print $NF}' | dmenu -i -l 20 | xargs -I {} rm -rf {} 
+  done | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'Delete:' | xargs -I {} rm -rf {} 
   ;;
    *)
    cd $DIR
    for file in "$DIR"/*; do
     [ -e "$file" ] || [ -L "$file" ] || continue
     printf "%s\n" "$file"
-  done | awk -F "/" '{print $NF}' | dmenu -i -l 20 | xargs -I {} mpv {} 
+  done | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'Play:' | xargs -I {} mpv {} 
   ;;
 esac
