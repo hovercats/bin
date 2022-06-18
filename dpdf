@@ -1,0 +1,24 @@
+#!/bin/sh -e
+
+# tiny script to see files in Documents. mainly pdfs for me.
+# opened with mupdf
+
+# set DIR variable to whatever floats your boat
+DIR="$HOME"/Documents
+
+case $1 in
+  -d)
+   cd $DIR
+   for file in "$DIR"/*; do
+    [ -e "$file" ] || [ -L "$file" ] || continue
+    printf "%s\n" "$file"
+  done | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'Delete:' | xargs -I {} rm -rf {} 
+  ;;
+   *)
+   cd $DIR
+   for file in "$DIR"/*; do
+    [ -e "$file" ] || [ -L "$file" ] || continue
+    printf "%s\n" "$file"
+  done | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'View:' | xargs -I {} mupdf {} 
+  ;;
+esac
