@@ -6,19 +6,13 @@
 # set DIR variable to whatever floats your boat
 DIR="$HOME"/Documents
 
+cd "$DIR"
+
 case $1 in
   -d)
-   cd $DIR
-   for file in "$DIR"/*; do
-    [ -e "$file" ] || [ -L "$file" ] || continue
-    printf "%s\n" "$file"
-  done | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'Delete:' | xargs -I {} rm -rf {} 
+  rm -rf "$(find . -type f | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'Delete:')"
   ;;
    *)
-   cd $DIR
-   for file in "$DIR"/*; do
-    [ -e "$file" ] || [ -L "$file" ] || continue
-    printf "%s\n" "$file"
-  done | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'View:' | xargs -I {} mupdf {} 
+  mupdf "$(find . -type f | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'View:')"
   ;;
 esac
