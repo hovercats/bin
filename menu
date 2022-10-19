@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# launch xmenu
+
+xmenu -d \
+	'firefox' \
+	'st' \
+	| while read x; do sh -c "$x & exit"; done 2> /dev/null
