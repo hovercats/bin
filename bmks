@@ -2,7 +2,7 @@
 
 # A simple bookmarking script that uses dmenu
 
-file_path="$HOME/.config/bmks/"
+file_path="$HOME/etc/bmks/"
 filename=urls
 bookmarks="$file_path/$filename"
 browser=$BROWSER
