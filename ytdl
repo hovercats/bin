@@ -4,7 +4,7 @@
 # Requires yt-dlp
 
 # Set the download dir
-DLDIR="$HOME"/Videos
+DLDIR="$HOME"/usr/vid
 
 nourl () {
     echo "Insert url"
