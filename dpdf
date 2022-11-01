@@ -4,15 +4,15 @@
 # opened with mupdf
 
 # set DIR variable to whatever floats your boat
-DIR="$HOME"/Documents
+DIR="$HOME"/usr/doc
 
 cd "$DIR"
 
 case $1 in
   -d)
-  rm -rf "$(find . -type f | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'Delete:')"
+  rm -rf "$(find ./*.pdf -type f | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'Delete:')"
   ;;
    *)
-  mupdf "$(find . -type f | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'View:')"
+  mupdf "$(find ./*.pdf -type f |awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'View:')"
   ;;
 esac
