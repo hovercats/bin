@@ -28,6 +28,13 @@ dl() {
        yt-dlp -P "$DLDIR" -f "$quality" "$url"
 }
 
+proxy() {
+	PROXY="&local=true"
+	url="$url$PROXY"
+	dl
+}
+
 case $1 in
+	-p) url=$2 proxy ;;
     *) url=$1 ifurl ;;
 esac
