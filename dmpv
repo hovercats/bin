@@ -4,7 +4,7 @@
 # No more need for a detached terminal taking up your screen space
 # you can also delete the selected video with -d option
 
-DIR="$HOME"/usr/Videos
+DIR="$HOME"/usr/vid
 
 cd "$DIR"
 
