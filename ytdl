@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-# Simple script to download videos to ~/Videos.
+# Simple script to download videos
 # Requires yt-dlp
 
 # Set the download dir
