@@ -6,27 +6,28 @@
 # Set the download dir
 DLDIR="$HOME"/usr/vid
 
-nourl () {
+nourl() {
     echo "Insert url"
     read -r url
-    yt-dlp -F "$url"
-    echo "Select quality. i.e. 248+251 or 22"
-    read -r quality
-    yt-dlp -P "$DLDIR" -f "$quality" "$url"
+    dl
 }
 
-sel() {
+ifurl() {
     # Check if an url has already been passed
    if [ -z "$url" ]; then 
        nourl 
    else
+   dl
+   fi
+}
+
+dl() {
        yt-dlp -F "$url"
        echo "Select quality. i.e. 248+251 or 22"
        read -r quality
        yt-dlp -P "$DLDIR" -f "$quality" "$url"
-   fi
 }
 
 case $1 in
-    *) url=$1 sel ;;
+    *) url=$1 ifurl ;;
 esac
