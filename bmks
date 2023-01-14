@@ -5,7 +5,7 @@
 file_path="$HOME/etc/bmks/"
 filename=urls
 bookmarks="$file_path/$filename"
-browser=$BROWSER
+browser="$BROWSER"
 launcher=dmenu
 
 usage () {
