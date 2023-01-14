@@ -1,33 +1,11 @@
 #!/bin/sh -e
-
 # A simple script to change screen brightness.
 
-# Path to brightness file, which holds value of current brightness
-# This path may be different across systems, change it accordingly
-# You will also need read/write access to this file.
-# Permissions on this file does however not persist across reboots, so a boot 
-# hook is neccessary to set appropriate permissions upon boot.
-BRI_FILE='/sys/class/backlight/amdgpu_bl0/brightness'
-CURR_BRI=$(cat "$BRI_FILE")
-
-increase () {
-    echo "$CURR_BRI" + 10 | bc > NEW_BRI
-    cat NEW_BRI > "$BRI_FILE"
-    rm -r NEW_BRI
-}
-
-decrease () {
-    echo "$CURR_BRI" - 10 | bc > NEW_BRI
-    cat NEW_BRI > "$BRI_FILE"
-    rm -r NEW_BRI
-}
-
-help () {
-    printf "Useage:\n\nUse 'd' or 'i' to decrease or increase screen brightness"
-}
+file='/sys/class/backlight/amdgpu_bl0/brightness'
+read -r brightness < "$file"
 
 case $1 in
-    i) increase  ;;
-    d) decrease  ;;
-    *) help ;;
+    d) printf "%s\n" "$((brightness - 5))" > "$file" ;;
+    i) printf "%s\n" "$((brightness + 5))" > "$file" ;;
+    *) printf "%s\n" "usage: ${0##*/} d|i" ;;
 esac
