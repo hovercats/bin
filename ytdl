@@ -29,9 +29,9 @@ dl() {
 }
 
 proxy() {
+	ifurl
 	PROXY="&local=true"
 	url="$url$PROXY"
-	dl
 }
 
 case $1 in
