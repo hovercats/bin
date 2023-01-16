@@ -1,26 +1,18 @@
 #!/bin/sh -e
 
-# A really simple script to search the web, from dmenu with your browser and
-# search engine of choice.
-# It will only handle search strings, which means if you type an actual URL,
-# $BROWSER will then search for that string on $ENGINE.
+# Search the web from dmenu
+# Does not handle URLs
 
-# Change this to w/e floats your boat.
-BROWSER=$BROWSER
+# shellcheck disable=2153
+browser="$BROWSER"
 
-# You can change this to w/e searchengine you like, aslong as its similarly
-# formatted as below.
-# Check your searchengine to be sure.
 ENGINE='https://duckduckgo.com/?q='
 
-# Set search string as a variable, and remove spaces, as we cant have any spaces
-# in our URL. Also make sure the substitution is correct if you change to a
-# different search engine as they might not be the same.
+# Spaces are not allowed, so substitute them to correct string
 STRING=$(printf '' | dmenu -p 'Search' | sed 's/ /%20/g')
 
-# exit if $STRING is empty.
-if [ "$STRING" = '' ]; then
-    exit 0
+if [ -z "$STRING" ]; then
+    exit 1
 else
-    $BROWSER "$ENGINE$STRING"
+    "$browser" "$ENGINE$STRING"
 fi
