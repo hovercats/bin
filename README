@@ -3,22 +3,18 @@ Scripts
 
 A repo containing some scripts I use.
 Please read all scrips before using them.
-I may or may not be the original author all scripts in this repo. 
-If Im not the author of said script, original author is probably listed in the 
-script, if they chose to include it themselves.
+I may not be the original author of every script here,but Ive chosen to add them
+regardless, as Ive likely made some changes to them to fit my system.
+Original author is likely listed if this is the case.
 
-I aim for all of the scripts in this repo to pass shellcheck, and as a secondary
-goal, all scripts being posix compliant.
-This also counts for scripts not originally written by me. Said scripts is
-modified to pass shellcheck.
+All scripts should pass shellcheck, and be posix. if not, I have probably not
+gotten around to it yet. That is, unless its intentional.
 
-
-The following scripts require(/is used with) wmutils[0] to work:
-  - groups.sh
-  - workspace.sh
-  - fullscreen.sh
-    - depend on focus.sh
-  - focus.sh
-  - tile.sh
+The following scripts require(/is used with) wmutils[0]:
+  - groups
+  - workspace
+  - fullscreen
+  - focus
+  - tile
 
 [0] https://github.com/wmutils/core
