@@ -2,19 +2,7 @@ Scripts
 -------
 
 A repo containing some scripts I use.
-Please read all scrips before using them.
-I may not be the original author of every script here,but Ive chosen to add them
-regardless, as Ive likely made some changes to them to fit my system.
-Original author is likely listed if this is the case.
+Most scripts should be POSIX, and pass shellcheck.
+That is, unless they... dont.
 
-All scripts should pass shellcheck, and be posix. if not, I have probably not
-gotten around to it yet. That is, unless its intentional.
-
-The following scripts require(/is used with) wmutils[0]:
-  - groups
-  - workspace
-  - fullscreen
-  - focus
-  - tile
-
-[0] https://github.com/wmutils/core
+Theres also some scripts written in rc, inside rc/ dir.

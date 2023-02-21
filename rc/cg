@@ -1,0 +1,3 @@
+#!/bin/rc
+
+st -e catgirl -h irc.libera.chat 
