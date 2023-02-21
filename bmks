@@ -2,11 +2,9 @@
 
 # A simple bookmarking script that uses dmenu
 
-file_path="$HOME/etc/bmks/"
+file_path="$HOME/etc/bmks"
 filename=urls
 bookmarks="$file_path/$filename"
-browser="$BROWSER"
-launcher=dmenu
 
 usage () {
     printf "bmks: A simple bookmarking script that uses dmenu
@@ -26,40 +24,47 @@ Configuration is done directly in script by editing the variables.
 
 }
 bmks_add () { 
-	[ -z "$url" ] && printf "Error: url must be provided\n" && exit 0
-  printf "Description: "
-  read -r description
-  [ -z "$description" ] && echo "$url" >> "$bookmarks"
-  [ -n "$description" ] && echo "$description" - "$url" >> "$bookmarks"
+	[ -z "$url" ] && printf "Error: url must be provided\n" && exit 1
+	printf "Description: "
+	read -r description
+	[ -z "$description" ] && echo "$url" >> "$bookmarks"
+	[ -n "$description" ] && echo "$description" - "$url" >> "$bookmarks"
 }
 
 bmks_ls () {
-    sort "$bookmarks"
+	sort "$bookmarks"
 }
 
 go_to () {
-    case $launcher in
-      dmenu) $browser $(sort "$bookmarks" | dmenu -i -l 10 | awk '{print $(NF)}') ;;
-    esac
+SELECTION="$(sort "${bookmarks}" | dmenu -i -l 10 | awk '{print $(NF)}')"
+if [ -z "${SELECTION}" ]; then
+	exit 1
+else
+	"${BROWSER}" "${SELECTION}"
+fi
 }
 
 bmks_del () {
-  case "$launcher" in
-    dmenu) sed "/$(sort "$bookmarks" | dmenu -i -l 10)/d" "$bookmarks" > _ && mv -f _ "$bookmarks" ;;
-esac
+	case "$$" in
+		*) sed "/$(sort "$bookmarks" | dmenu -i -l 10)/d" "$bookmarks" > _ && mv -f _ "$bookmarks" ;;
+	esac
 }
 
 bmks_check () {
-    [ ! -s "$bookmarks" ] && printf "No bookmarks found. please add one" && usage && exit 0
+	if [ ! -s "${bookmarks}" ]; then
+	printf "No bookmarks found. please add one"
+	usage
+	exit 1
+	fi
 }
 
 [ ! -d "$file_path" ] && mkdir -p "$file_path"
 [ ! -f "$filename" ] && touch "$file_path/$filename" 
 
 case "$1" in
-    help) usage ;;
-    add) url=$2 bmks_add ;;
-    ls) bmks_ls ;;
-    del) bmks_del ;;
-    *) go_to ;;
+	help) usage ;;
+	add) url=$2 bmks_add ;;
+	ls) bmks_ls ;;
+	del) bmks_del ;;
+	*) go_to ;;
 esac
