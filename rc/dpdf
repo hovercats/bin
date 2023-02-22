@@ -1,0 +1,16 @@
+#!/bin/rc
+
+# tiny script to see files in Documents. mainly pdfs for me.
+# opened with mupdf
+
+# set DIR variable to whatever floats your boat
+DIR=$HOME/usr/doc
+
+cd $DIR
+
+switch($1) {
+case -d
+	rm -rf `{find *.pdf -type f | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'Delete:'}
+case *
+	mupdf `{find *.pdf -type f | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'View:'}
+}
