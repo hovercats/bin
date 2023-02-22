@@ -1,0 +1,16 @@
+#!/bin/rc
+
+# Search the web from dmenu
+# Does not handle URLs
+
+ENGINE='https://duckduckgo.com/?q='
+
+# Spaces are not allowed, so substitute them to correct string
+STRING=`{printf '' | dmenu -p 'Search' | sed 's/ /%20/g'}
+
+if (test -z $STRING){
+	exit 1
+}
+if not {
+	$BROWSER $ENGINE$STRING
+}
