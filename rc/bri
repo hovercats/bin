@@ -6,7 +6,7 @@ file=/sys/class/backlight/amdgpu_bl0/brightness
 
 switch($1) {
 case d
-	 echo $val - 5 | bc >$file
+	 echo $val | awk '{ print $1 - 5 }' >$file
 case i
-	 echo $val + 5 | bc >$file
+	 echo $val | awk '{ print $1 + 5 }' >$file
 }
