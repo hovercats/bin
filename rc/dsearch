@@ -11,6 +11,5 @@ STRING=`{printf '' | dmenu -p 'Search' | sed 's/ /%20/g'}
 if (test -z $STRING){
 	exit 1
 }
-if not {
+if not
 	$BROWSER $ENGINE$STRING
-}
