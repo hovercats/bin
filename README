@@ -2,7 +2,8 @@ Scripts
 -------
 
 A repo containing some scripts I use.
-Most scripts should be POSIX, and pass shellcheck.
-That is, unless they... dont.
 
-Theres also some scripts written in rc, inside rc/ dir.
+- sh/
+	- aims for POSIX, and passing shellcheck for portability and correctness
+- rc/
+	- scripts written in plan9's rc
