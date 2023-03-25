@@ -19,6 +19,7 @@ usage() {
 # this will unset the fullscreen state of any fullscreen window if there is one.
 # this way, there will only be one window in fullscreen at a time, and no window
 # will loose their previous geometry info
+# shellcheck disable=2046
 [ -f "${FSFILE}" ] && wtp $(cat "${FSFILE}")
 
 # if file exist and contain our window id, it means that out window is in
@@ -33,6 +34,7 @@ else
     # geometry and id to $FSFILE we also remove any border from this window.
     wattr xywhi "$1" > "${FSFILE}"
     chwb -s 0 "$1"
+    # shellcheck disable=2046
     wtp $(wattr xywh $(lsw -r)) "$1"
 fi
 

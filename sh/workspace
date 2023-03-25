@@ -22,74 +22,74 @@ EOF
 ws_init() {
 	mkdir -p /tmp/workspaces/
 	i=0
-	while [ $i -le $NUM_WS ]; do
+	while [ "$i" -le "${NUM_WS}" ]; do
 		:> /tmp/workspaces/ws"$i"
-		i=$(echo $i + 1 | bc)
+		i="$(echo "$i" + 1 | bc)"
 	done
 	echo 0 > /tmp/workspaces/curr
 }
 # Saves all mapped windows to the current workspace.
 save_ws() {
 	curr=$(cat /tmp/workspaces/curr)
-	lsw > /tmp/workspaces/ws"$curr"
+	lsw > /tmp/workspaces/ws"${curr}"
 }
 move_to_ws() {
 	ws_num=$1
-	if [ "$ws_num" -gt $NUM_WS ] || [ "$ws_num" -lt 0 ]; then
+	if [ "${ws_num}" -gt "${NUM_WS}" ] || [ "${ws_num}" -lt 0 ]; then
 		echo "Workspace not found"
 		return
 	fi
 	curr_ws=$(cat /tmp/workspaces/curr);
-	if [ "$ws_num" = "$curr_ws" ]; then
+	if [ "${ws_num}" = "${curr_ws}" ]; then
 		# same workspace. ignore flicker
 		return
 	fi
 	save_ws
 	curr_windows=$(lsw)
-	if [ "$curr_windows" ]; then
+	if [ "${curr_windows}" ]; then
 		mapw -u "$(lsw)"
 	fi
-	new_windows="$(cat /tmp/workspaces/ws"$ws_num")"
+	new_windows="$(cat /tmp/workspaces/ws"${ws_num}")"
 	if [ "$new_windows" ]; then
 		mapw -m "$new_windows"
 	fi
-	echo "$ws_num" > /tmp/workspaces/curr
+	echo "${ws_num}" > /tmp/workspaces/curr
 }
 next_ws() {
 	# Get what ws we're currently in.
 	curr=$(cat /tmp/workspaces/curr)
-	curr=$(echo "$curr" + 1 | bc)
+	curr=$(echo "${curr}" + 1 | bc)
 
 	# Take care of loopback.
-	if [ "$curr" -gt $NUM_WS ]; then
+	if [ "${curr}" -gt "${NUM_WS}" ]; then
 		curr=0
 	fi
 
-	move_to_ws $curr
+	move_to_ws "${curr}"
 }
 prev_ws() {
 	# Get what ws we're currently in.
 	curr=$(cat /tmp/workspaces/curr)
-	curr=$(echo "$curr" - 1 | bc)
+	curr=$(echo "${curr}" - 1 | bc)
 
 	# Take care of loopback.
-	if [ "$curr" -lt 0 ]; then
-		curr=$NUM_WS
+	if [ "${curr}" -lt 0 ]; then
+		curr="${NUM_WS}"
 	fi
 
-	move_to_ws "$curr"
+	move_to_ws "${curr}"
 }
 move_focused_window() {
-	ws_num=$1
-	if [ "$ws_num" -gt "$NUM_WS" ] || [ "$ws_num" -lt 0 ]; then
+	ws_num="$1"
+	if [ "${ws_num}" -gt "${NUM_WS}" ] || [ "${ws_num}" -lt 0 ]; then
 		echo "Workspace not found"
 		return
 	fi
-	wid=$(pfw)
-	curr_ws=$(cat /tmp/workspaces/curr);
-	if [ "$ws_num" != "$curr_ws" ]; then
+	wid="$(pfw)"
+	curr_ws="$(cat /tmp/workspaces/curr)";
+	if [ "${ws_num}" != "${curr_ws}" ]; then
 		pfw >> /tmp/workspaces/ws"$1"
-		mapw -u "$wid"
+		mapw -u "${wid}"
 	fi
 }
 while getopts ":m:g:npi" opt; do
@@ -99,9 +99,9 @@ while getopts ":m:g:npi" opt; do
 		p)
 			prev_ws;;
 		g)
-			move_to_ws "$OPTARG";;
+			move_to_ws "${OPTARG}";;
 		m)
-			move_focused_window "$OPTARG";;
+			move_focused_window "${OPTARG}";;
 		i)
 			ws_init;;
 		\?)
