@@ -9,7 +9,7 @@ browser="$BROWSER"
 ENGINE='https://duckduckgo.com/?q='
 
 # Spaces are not allowed, so substitute them to correct string
-STRING=$(printf '' | dmenu -p 'Search' | sed 's/ /%20/g')
+STRING=$(printf '' | dmenu -c -p 'Search' | sed 's/ /%20/g')
 
 if [ -z "$STRING" ]; then
     exit 1

@@ -10,9 +10,9 @@ cd "$DIR"
 
 case $1 in
   -d)
-  rm -rf "$(find . -type f | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'Delete:')"
+  rm -rf "$(find . -type f | awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'Delete:')"
   ;;
    *)
-  mpv "$(find . -type f | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'Play:')"
+  mpv "$(find . -type f | awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'Play:')"
   ;;
 esac

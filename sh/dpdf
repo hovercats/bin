@@ -10,9 +10,9 @@ cd "$DIR"
 
 case $1 in
   -d)
-  rm -rf "$(find ./*.pdf -type f | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'Delete:')"
+  rm -rf "$(find ./*.pdf -type f | awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'Delete:')"
   ;;
    *)
-  mupdf "$(find ./*.pdf -type f |awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'View:')"
+  mupdf "$(find ./*.pdf -type f |awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'View:')"
   ;;
 esac

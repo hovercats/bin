@@ -36,7 +36,7 @@ bmks_ls () {
 }
 
 go_to () {
-SELECTION="$(sort "${bookmarks}" | dmenu -i -l 10 | awk '{print $(NF)}')"
+SELECTION="$(sort "${bookmarks}" | dmenu -c -i -l 10 | awk '{print $(NF)}')"
 if [ -z "${SELECTION}" ]; then
 	exit 1
 else
@@ -46,7 +46,7 @@ fi
 
 bmks_del () {
 	case "$$" in
-		*) sed "/$(sort "$bookmarks" | dmenu -i -l 10)/d" "$bookmarks" > _ && mv -f _ "$bookmarks" ;;
+		*) sed "/$(sort "$bookmarks" | dmenu -c -i -l 10)/d" "$bookmarks" > _ && mv -f _ "$bookmarks" ;;
 	esac
 }
 
