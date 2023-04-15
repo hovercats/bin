@@ -1,0 +1,21 @@
+#!/bin/rc
+
+CUR=`{pfw}
+
+switch($1) {
+	case n
+		wid=`{lsw | grep -v $CUR | sed '1 p;d'}
+	case p
+		wid=`{lsw | grep -v $CUR | sed '$ p;d'}
+	case *
+		echo 'Usage: n|p' && exit 1
+}
+
+if (test -z $"wid) {
+	echo 'No window to focus on'
+	exit 1
+}
+if not {
+	chwso -r $"wid
+	wtf $"wid
+}
