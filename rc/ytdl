@@ -1,0 +1,14 @@
+#!/bin/rc
+
+# Simple script to download videos
+# Requires yt-dlp
+
+DLDIR=$HOME/usr/vid
+
+if (test -z $1){
+	printf 'No url found\n'
+	exit 1
+}
+
+val=`{yt-dlp -F $1 | grep '1080p' | tail -n 1 | awk '{print $1}'}
+yt-dlp -P $DLDIR -f $val+bestaudio $1
