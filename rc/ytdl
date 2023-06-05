@@ -4,6 +4,7 @@
 # Requires yt-dlp
 
 DLDIR=$HOME/usr/vid
+proxy='&local=true'
 
 if (test -z $1){
 	printf 'No url found\n'
@@ -11,4 +12,4 @@ if (test -z $1){
 }
 
 val=`{yt-dlp -F $1 | grep '1080p' | tail -n 1 | awk '{print $1}'}
-yt-dlp -P $DLDIR -f $val+bestaudio $1
+yt-dlp -P $DLDIR -f $val+bestaudio $1$proxy
