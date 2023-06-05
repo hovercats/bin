@@ -1,8 +1,6 @@
 #!/bin/rc
 
 # A tiny script for launching videos inside Videos dir with mpv
-# No more need for a detached terminal taking up your screen space
-# you can also delete the selected video with -d option
 
 DIR=$HOME/usr/vid
 

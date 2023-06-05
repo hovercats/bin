@@ -1,6 +1,6 @@
 #!/bin/rc
 
 # just wait a bit
-while () {
+while() {
 	 wait $pid
 }

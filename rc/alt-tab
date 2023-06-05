@@ -1,12 +1,10 @@
 #!/bin/rc
 
-CUR=`{pfw}
-
 switch($1) {
 	case n
-		wid=`{lsw | grep -v $CUR | sed '1 p;d'}
+		wid=`{lsw | grep -v `{pfw} | sed '1 p;d'}
 	case p
-		wid=`{lsw | grep -v $CUR | sed '$ p;d'}
+		wid=`{lsw | grep -v `{pfw} | sed '$ p;d'}
 	case *
 		echo 'Usage: n|p' && exit 1
 }
