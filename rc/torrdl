@@ -1,0 +1,9 @@
+#!/bin/rc
+
+# download .torrent files to a directory where transmission will find them
+
+dir=$HOME/usr/transmission
+
+cd $dir
+
+curl -fLO $1
