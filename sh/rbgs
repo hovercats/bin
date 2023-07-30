@@ -2,7 +2,7 @@
 
 # Simple script which changes your wallpaper on set amount of time.
 
-cd "$HOME"/wallpapers
+cd "$HOME"/usr/img
 
 while :
 do
