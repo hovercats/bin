@@ -2,6 +2,8 @@
 
 # A simple bookmarking script that uses dmenu
 
+[ -z "$BROWSER" ] &&  printf 'BROWSER var not set\n' && exit 1
+
 file_path="$HOME/etc/bmks"
 filename=urls
 bookmarks="$file_path/$filename"
