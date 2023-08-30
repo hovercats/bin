@@ -9,20 +9,7 @@ filename=urls
 bookmarks="$file_path/$filename"
 
 usage () {
-    printf "bmks: A simple bookmarking script that uses dmenu
-
-Usage:
-bmks help
-  show this message
-bmks add <url>
-  add a new bookmark
-bmks del
-  remove a bookmark
-bmks ls
-  list bookmarks
-
-Configuration is done directly in script by editing the variables.
-"
+    printf "Usage: bmks add <url> | del | ls\n"
 
 }
 bmks_add () { 
