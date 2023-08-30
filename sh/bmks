@@ -9,7 +9,7 @@ filename=urls
 bookmarks="$file_path/$filename"
 
 usage () {
-    printf "Usage: bmks add <url> | del | ls\n"
+    printf "Usage: bmks a|d|l\n"
 
 }
 bmks_add () { 
@@ -51,9 +51,9 @@ bmks_check () {
 [ ! -f "$filename" ] && touch "$file_path/$filename" 
 
 case "$1" in
-	help) usage ;;
-	add) url=$2 bmks_add ;;
-	ls) bmks_ls ;;
-	del) bmks_del ;;
+	h) usage ;;
+	a) url=$2 bmks_add ;;
+	l) bmks_ls ;;
+	d) bmks_del ;;
 	*) go_to ;;
 esac
