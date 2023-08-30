@@ -9,8 +9,6 @@ out="$dir/$(date +scrot-%Y%m%d-%H:%M).png"
 ffmpeg \
 	-hide_banner -loglevel error \
 	-f x11grab -r 144 -draw_mouse 0 \
-	-i "$DISPLAY" \
-	-frames:v 1 \
-	"$out"
+	-i "$DISPLAY" -frames:v 1 "$out"
 
 echo "$out"
