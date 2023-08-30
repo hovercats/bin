@@ -14,17 +14,17 @@ bmks_add () {
 	[ -z "$url" ] && printf "Error: url must be provided\n" && exit 1
 	printf "Description: "
 	read -r description
-	[ -z "$description" ] && echo "$url" >> "$bookmarks"
-	[ -n "$description" ] && echo "$description" - "$url" >> "$bookmarks"
+	[ -z "${description}" ] && echo "${url}" >> "${bookmarks}"
+	[ -n "${description}" ] && echo "${description}" - "${url}" >> "${bookmarks}"
 }
 
 bmks_ls () {
-	sort "$bookmarks"
+	sort "${bookmarks}"
 }
 
 go_to () {
 	[ ! -s "${bookmarks}" ] &&  printf "No bookmarks found. please add one" && exit 1
-	[ -z "$BROWSER" ] &&  printf 'BROWSER var not set\n' && exit 1
+	[ -z "${BROWSER}" ] &&  printf 'BROWSER var not set\n' && exit 1
 	SELECTION="$(sort "${bookmarks}" | dmenu -c -i -l 10 | awk '{print $(NF)}')"
 	if [ -z "${SELECTION}" ]; then
 		exit 1
@@ -34,7 +34,7 @@ go_to () {
 }
 
 bmks_del () {
-	sed "/$(sort "$bookmarks" | dmenu -c -i -l 10)/d" "$bookmarks" > _ && mv -f _ "$bookmarks"
+	sed "/$(sort "${bookmarks}" | dmenu -c -i -l 10)/d" "${bookmarks}" > _ && mv -f _ "${bookmarks}"
 }
 
 [ ! -d "$file_path" ] && mkdir -p "$file_path"
