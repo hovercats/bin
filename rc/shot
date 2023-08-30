@@ -1,0 +1,14 @@
+#!/bin/rc
+
+dir=$HOME/usr/scrots
+filename=`{date +scrot-%Y%m%d-%H-%M}
+out=$dir/$filename.png
+
+test -d $dir || mkdir -p $dir
+
+ffmpeg \
+	-hide_banner -loglevel error \
+	-f x11grab -r 144 -draw_mouse 0 \
+	-i $DISPLAY -frames:v 1 $out
+
+printf %s\n $out
