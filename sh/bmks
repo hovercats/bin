@@ -2,8 +2,6 @@
 
 # A simple bookmarking script that uses dmenu
 
-[ -z "$BROWSER" ] &&  printf 'BROWSER var not set\n' && exit 1
-
 file_path="$HOME/etc/bmks"
 filename=urls
 bookmarks="$file_path/$filename"
@@ -40,6 +38,7 @@ bmks_del () {
 }
 
 bmks_check () {
+	[ -z "$BROWSER" ] &&  printf 'BROWSER var not set\n' && exit 1
 	if [ ! -s "${bookmarks}" ]; then
 	printf "No bookmarks found. please add one"
 	usage
