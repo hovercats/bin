@@ -10,6 +10,16 @@ usage () {
     printf "Usage: bmks a|d|l\n"
 
 }
+
+bmks_check () {
+	[ -z "$BROWSER" ] &&  printf 'BROWSER var not set\n' && exit 1
+	if [ ! -s "${bookmarks}" ]; then
+	printf "No bookmarks found. please add one"
+	usage
+	exit 1
+	fi
+}
+
 bmks_add () { 
 	[ -z "$url" ] && printf "Error: url must be provided\n" && exit 1
 	printf "Description: "
@@ -37,14 +47,6 @@ bmks_del () {
 	esac
 }
 
-bmks_check () {
-	[ -z "$BROWSER" ] &&  printf 'BROWSER var not set\n' && exit 1
-	if [ ! -s "${bookmarks}" ]; then
-	printf "No bookmarks found. please add one"
-	usage
-	exit 1
-	fi
-}
 
 [ ! -d "$file_path" ] && mkdir -p "$file_path"
 [ ! -f "$filename" ] && touch "$file_path/$filename" 
