@@ -6,11 +6,11 @@ file_path="$HOME/etc/bmks"
 filename=urls
 bookmarks="$file_path/$filename"
 
-usage () {
+usage() {
     printf "Usage: bmks a|d|l\n"
 }
 
-bmks_add () { 
+add() { 
 	[ -z "$url" ] && printf "Error: url must be provided\n" && exit 1
 	printf "Description: "
 	read -r description
@@ -18,11 +18,11 @@ bmks_add () {
 	[ -n "${description}" ] && echo "${description}" - "${url}" >> "${bookmarks}"
 }
 
-bmks_ls () {
+list() {
 	sort "${bookmarks}"
 }
 
-go_to () {
+go_to() {
 	[ ! -s "${bookmarks}" ] &&  printf "No bookmarks found. please add one" && exit 1
 	[ -z "${BROWSER}" ] &&  printf 'BROWSER var not set\n' && exit 1
 	SELECTION="$(sort "${bookmarks}" | dmenu -c -i -l 10 | awk '{print $(NF)}')"
@@ -33,7 +33,7 @@ go_to () {
 	fi
 }
 
-bmks_del () {
+del() {
 	sed "/$(sort "${bookmarks}" | dmenu -c -i -l 10)/d" "${bookmarks}" > _ && mv -f _ "${bookmarks}"
 }
 
@@ -42,8 +42,8 @@ bmks_del () {
 
 case "$1" in
 	h) usage ;;
-	a) url=$2 bmks_add ;;
-	l) bmks_ls ;;
-	d) bmks_del ;;
+	a) url=$2 add ;;
+	l) list ;;
+	d) del ;;
 	*) go_to ;;
 esac
