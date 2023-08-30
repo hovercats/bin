@@ -34,9 +34,7 @@ go_to () {
 }
 
 bmks_del () {
-	case "$$" in
-		*) sed "/$(sort "$bookmarks" | dmenu -c -i -l 10)/d" "$bookmarks" > _ && mv -f _ "$bookmarks" ;;
-	esac
+	sed "/$(sort "$bookmarks" | dmenu -c -i -l 10)/d" "$bookmarks" > _ && mv -f _ "$bookmarks"
 }
 
 [ ! -d "$file_path" ] && mkdir -p "$file_path"
