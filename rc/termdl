@@ -1,3 +1,0 @@
-#!/bin/rc
-
-st -e ytdl $1
