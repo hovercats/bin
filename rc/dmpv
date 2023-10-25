@@ -2,9 +2,7 @@
 
 # A tiny script for launching videos inside Videos dir with mpv
 
-DIR=$HOME/usr/vid
-
-cd $DIR
+cd $HOME/usr/vid
 
 switch($1) {
 case -d
