@@ -2,8 +2,6 @@
 
 # download .torrent files to a directory where transmission will find them
 
-dir=$HOME/usr/transmission
-
-cd $dir
+cd $HOME/usr/transmission
 
 curl -fLO $1
