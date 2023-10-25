@@ -2,9 +2,7 @@
 
 # open pdfs in mupdf with dmenu
 
-DIR=$HOME/usr/doc
-
-cd $DIR
+cd $HOME/usr/doc
 
 switch($1) {
 case -d
