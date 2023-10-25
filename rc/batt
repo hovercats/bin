@@ -1,6 +1,4 @@
 #!/bin/rc
 
-DIR=/sys/class/power_supply/BAT1
-
-cat $DIR/capacity
-cat $DIR/status
+for (file in capacity status)
+	cat /sys/class/power_supply/BAT1/$file
