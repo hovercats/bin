@@ -10,5 +10,5 @@ case -d
 	rm -rf $"sel
 case *
 	sel=`{find . -type f | awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'Play:'}
-	mpv $"sel
+	exec mpv $"sel
 }

@@ -29,7 +29,7 @@ go_to() {
 	if [ -z "${SELECTION}" ]; then
 		exit 1
 	else
-		"${BROWSER}" "${SELECTION}"
+		exec "${BROWSER}" "${SELECTION}"
 	fi
 }
 

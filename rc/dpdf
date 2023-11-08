@@ -10,5 +10,5 @@ case -d
 	rm -rf $"sel
 case *
 	sel=`{find *.pdf -type f | awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'View:'}
-	mupdf $"sel
+	exec mupdf $"sel
 }

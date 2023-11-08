@@ -12,4 +12,4 @@ if (test -z $STRING){
 	exit 1
 }
 if not
-	$BROWSER $ENGINE$STRING
+	exec $BROWSER $ENGINE$STRING
