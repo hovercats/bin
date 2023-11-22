@@ -7,4 +7,3 @@ A repo containing some scripts I use.
 	- aims for POSIX, and passing shellcheck for portability and correctness
 - rc/
 	- scripts written in plan9's rc
-	- contains some of the same scripts as in sh/, just ported to rc
