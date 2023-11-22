@@ -34,7 +34,8 @@ go_to() {
 }
 
 del() {
-	sed "/$(sort "${bookmarks}" | dmenu -c -i -l 10)/d" "${bookmarks}" > _ && mv -f _ "${bookmarks}"
+	sed "/$(sort "${bookmarks}" | dmenu -c -i -l 10)/d" "${bookmarks}" > _
+	mv -f _ "${bookmarks}"
 }
 
 [ ! -d "${file_path}" ] && mkdir -p "${file_path}"
