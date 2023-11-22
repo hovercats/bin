@@ -14,8 +14,8 @@ add() {
 	[ -z "${url}" ] && printf "Error: url must be provided\n" && exit 1
 	printf "Description: "
 	read -r description
-	[ -z "${description}" ] && echo "${url}" >> "${bookmarks}"
-	[ -n "${description}" ] && echo "${description}" - "${url}" >> "${bookmarks}"
+	[ -z "${description}" ] && printf "%s\n" "${url}" >> "${bookmarks}"
+	[ -n "${description}" ] && printf "%s\n" "${description} - ${url}" >> "${bookmarks}"
 }
 
 list() {
