@@ -6,7 +6,7 @@ val=`{cat $file}
 
 switch($1) {
 case d
-	 echo $val | awk '{ print $1 - 5 }' >$file
+	 printf %s\n $val | awk '{ print $1 - 5 }' >$file
 case i
-	 echo $val | awk '{ print $1 + 5 }' >$file
+	 printf %s\n $val | awk '{ print $1 + 5 }' >$file
 }
