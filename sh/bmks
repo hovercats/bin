@@ -2,16 +2,16 @@
 
 # A simple bookmarking script that uses dmenu
 
-file_path="$HOME/etc/bmks"
+file_path="${XDG_CONFIG_HOME}/bmks"
 filename=urls
-bookmarks="$file_path/$filename"
+bookmarks="${file_path}/${filename}"
 
 usage() {
     printf "Usage: bmks a|d|l\n"
 }
 
 add() { 
-	[ -z "$url" ] && printf "Error: url must be provided\n" && exit 1
+	[ -z "${url}" ] && printf "Error: url must be provided\n" && exit 1
 	printf "Description: "
 	read -r description
 	[ -z "${description}" ] && echo "${url}" >> "${bookmarks}"
@@ -37,8 +37,8 @@ del() {
 	sed "/$(sort "${bookmarks}" | dmenu -c -i -l 10)/d" "${bookmarks}" > _ && mv -f _ "${bookmarks}"
 }
 
-[ ! -d "$file_path" ] && mkdir -p "$file_path"
-[ ! -f "$filename" ] && touch "$file_path/$filename" 
+[ ! -d "${file_path}" ] && mkdir -p "${file_path}"
+[ ! -f "${filename}" ] && touch "${file_path}/${filename}" 
 
 case "$1" in
 	h) usage ;;
