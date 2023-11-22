@@ -6,11 +6,11 @@ switch($1) {
 	case p
 		wid=`{lsw | grep -v `{pfw} | sed '$ p;d'}
 	case *
-		echo 'Usage: n|p' && exit 1
+		printf 'Usage: n|p\n' && exit 1
 }
 
 if (test -z $"wid) {
-	echo 'No window to focus on'
+	printf 'No window to focus on\n'
 	exit 1
 }
 if not {
