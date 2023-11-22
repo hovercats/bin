@@ -2,5 +2,5 @@
 
 DIR="/sys/class/power_supply/BAT1"
 
-cat "$DIR"/capacity
-cat "$DIR"/status
+cat "${DIR}/capacity"
+cat "${DIR}/status"
