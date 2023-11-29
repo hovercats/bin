@@ -9,7 +9,7 @@ FSFILE="${FSFILE:-/tmp/.fwin}"
 
 # it's pretty simple, but anyway...
 usage() {
-    echo "usage: $(basename "$0") <wid>"
+    printf "%susage: $(basename "$0") <wid>\n"
     exit 1
 }
 
