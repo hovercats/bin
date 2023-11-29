@@ -11,7 +11,7 @@ INACTIVE="${INACTIVE:-0x333333}" # inactive border color
 CUR=$(pfw)
 
 usage() {
-    printf "usage: $(basename "$0") <next|prev|wid>\n" "%s"
+    printf "usage: %s $(basename "$0") <next|prev|wid>\n"
     exit 1
 }
 
@@ -38,7 +38,7 @@ case $1 in
 esac
 
 # exit if we can't find another window to focus
-[ -z "$wid" ] && printf "$(basename "$0"): can't find a window to focus\n" "%s" >&2 && exit 1
+[ -z "$wid" ] && printf  "$(basename "$0"): %s can't find a window to focus\n" >&2 && exit 1
 
 setborder inactive "${CUR}" # set inactive border on current window
 setborder active "${wid}"   # activate the new window
