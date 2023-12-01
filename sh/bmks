@@ -37,7 +37,7 @@ go_to() {
 }
 
 del() {
-	grep -v "$(sort ${bookmarks} | dmenu -c -i -l 10)" "${bookmarks}" > _ \
+	grep -v "$(sort "${bookmarks}" | dmenu -c -i -l 10)" "${bookmarks}" > _ \
 	&& mv -f _ "${bookmarks}"
 }
 
