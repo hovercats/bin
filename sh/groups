@@ -194,7 +194,7 @@ while getopts "hc:Cs:t:m:M:u:U" opt; do
             break
             ;;
         s)
-            set_group "$OPTARG" "$(eval echo "\$$OPTIND")"
+            set_group "$OPTARG" "$(eval printf "\$$OPTIND")"
             break
             ;;
         t)
