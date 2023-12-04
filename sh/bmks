@@ -8,7 +8,7 @@ filename=urls
 bookmarks="${file_path}/${filename}"
 
 usage() {
-    printf "Usage: bmks a|d|l\n"
+    printf "Usage: bmks a|c|d|l\n"
 }
 
 add() { 
@@ -41,10 +41,13 @@ del() {
 	&& mv -f _ "${bookmarks}"
 }
 
-[ ! -d "${file_path}" ] && mkdir -p "${file_path}"
-[ ! -f "${filename}" ] && touch "${file_path}/${filename}" 
+conf() {
+	[ ! -d "${file_path}" ] && mkdir -p "${file_path}"
+	[ ! -f "${filename}" ] && touch "${file_path}/${filename}" 
+}
 
 case "$1" in
+	c) conf ;;
 	h) usage ;;
 	a) url=$2 add ;;
 	l) list ;;
