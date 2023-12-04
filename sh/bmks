@@ -11,6 +11,11 @@ usage() {
     printf "Usage: bmks a|c|d|l\n"
 }
 
+conf() {
+	[ ! -d "${file_path}" ] && mkdir -p "${file_path}"
+	[ ! -f "${filename}" ] && touch "${file_path}/${filename}" 
+}
+
 add() { 
 	[ -z "${url}" ] && printf "Error: url must be provided\n" && exit 1
 	description="$(printf '' | dmenu -p "Description: " -c)"
@@ -39,11 +44,6 @@ go_to() {
 del() {
 	grep -v "$(cat "${bookmarks}" | dmenu -c -i -l 10)" "${bookmarks}" > _ \
 	&& mv -f _ "${bookmarks}"
-}
-
-conf() {
-	[ ! -d "${file_path}" ] && mkdir -p "${file_path}"
-	[ ! -f "${filename}" ] && touch "${file_path}/${filename}" 
 }
 
 case "$1" in
