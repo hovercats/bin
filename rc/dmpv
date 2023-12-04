@@ -5,10 +5,10 @@
 cd $HOME/usr/vid
 
 switch($1) {
-case -d
-	sel=`{find . -type f | awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'Delete:'}
-	rm -rf $"sel
-case *
-	sel=`{find . -type f | awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'Play:'}
-	exec mpv $"sel
+	case -d
+		sel=`{find . -type f | awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'Delete:'}
+		rm -rf $"sel
+	case *
+		sel=`{find . -type f | awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'Play:'}
+		exec mpv $"sel
 }

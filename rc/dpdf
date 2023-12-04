@@ -5,10 +5,10 @@
 cd $HOME/usr/doc
 
 switch($1) {
-case -d
-	sel=`{find *.pdf -type f | awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'Delete:'}
-	rm -rf $"sel
-case *
-	sel=`{find *.pdf -type f | awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'View:'}
-	exec mupdf $"sel
+	case -d
+		sel=`{find *.pdf -type f | awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'Delete:'}
+		rm -rf $"sel
+	case *
+		sel=`{find *.pdf -type f | awk -F "/" '{print $NF}' | dmenu -c -i -l 20 -p 'View:'}
+		exec mupdf $"sel
 }
