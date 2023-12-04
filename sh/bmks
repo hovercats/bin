@@ -22,13 +22,13 @@ add() {
 }
 
 list() {
-	sort "${bookmarks}"
+	cat "${bookmarks}"
 }
 
 go_to() {
 	[ ! -s "${bookmarks}" ] && printf "No bookmarks found.\n" && exit 1
 	[ -z "${BROWSER}" ] &&  printf 'BROWSER var not set\n' && exit 1
-	SELECTION="$(sort "${bookmarks}" | dmenu -c -i -l 10 | awk '{print $(NF)}')"
+	SELECTION="$(cat "${bookmarks}" | dmenu -c -i -l 10 | awk '{print $(NF)}')"
 	if [ -z "${SELECTION}" ]; then
 		exit 1
 	else
@@ -37,7 +37,7 @@ go_to() {
 }
 
 del() {
-	grep -v "$(sort "${bookmarks}" | dmenu -c -i -l 10)" "${bookmarks}" > _ \
+	grep -v "$(cat "${bookmarks}" | dmenu -c -i -l 10)" "${bookmarks}" > _ \
 	&& mv -f _ "${bookmarks}"
 }
 
