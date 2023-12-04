@@ -47,10 +47,10 @@ conf() {
 }
 
 case "$1" in
-	c) conf ;;
-	h) usage ;;
 	a) url=$2 add ;;
-	l) list ;;
+	c) conf ;;
 	d) del ;;
+	h) usage ;;
+	l) list ;;
 	*) go_to ;;
 esac
