@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Based on https://github.com/wmutils/contrib/blob/master/focus_watcher.sh
+# and https://git.disroot.org/root_informatica/wms/src/branch/main/wms_voyeur.sh
+
+while read ev wid args; do
+	case $ev in
+		MAP) wattr o $wid || focus top ;;
+		UNMAP) [ ! "$(pfw)" ] && focus top ;;
+	esac
+done
