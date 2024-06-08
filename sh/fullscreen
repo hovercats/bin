@@ -4,6 +4,9 @@
 # toggle the fullscreen state of a window
 # depends on: focus
 
+BW="${BW:-2}"                    # border width
+ACTIVE="${ACTIVE:-0xffffff}"     # active border color
+
 # this file is used to store the previous geometry of a window
 FSFILE="${FSFILE:-/tmp/.fwin}"
 
@@ -20,7 +23,7 @@ usage() {
 # this way, there will only be one window in fullscreen at a time, and no window
 # will loose their previous geometry info
 # shellcheck disable=2046
-[ -f "${FSFILE}" ] && wtp $(cat "${FSFILE}")
+[ -f "${FSFILE}" ] && wtp $(cat "${FSFILE}") && chwb -s "${BW}" -c "${ACTIVE}" $(pfw)
 
 # if file exist and contain our window id, it means that out window is in
 # fullscreen mode
@@ -38,6 +41,5 @@ else
     wtp $(wattr xywh $(lsw -r)) "$1"
 fi
 
-# now focus the window, and put it in front, no matter which state we're in, and
-# put the cursor on its bottom-right corner (for consistency)
+# now focus the window, and put it in front
 focus "$1"

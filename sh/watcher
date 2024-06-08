@@ -5,7 +5,7 @@
 
 while read ev wid args; do
 	case $ev in
-		MAP) wattr o $wid || focus top ;;
+		MAP) wattr o $wid || focus $wid ;;
 		UNMAP) [ ! "$(pfw)" ] && focus top ;;
 	esac
 done
