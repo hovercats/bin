@@ -3,7 +3,7 @@
 # A simple bookmarking script that uses dmenu
 # dmenu uses -c flag, which is part of the center patch
 
-file_path="${XDG_CONFIG_HOME}/bmks"
+file_path="$HOME/etc/bmks"
 filename=urls
 bookmarks="${file_path}/${filename}"
 
