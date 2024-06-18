@@ -2,9 +2,9 @@
 
 upstream="$HOME/src/selfmade/dotfiles"
 
-[ -e "$upstream/HEAD" ] || {
-	mkdir -p "$upstream"
-	git clone --bare git@github.com:hovercats/dotfiles "$upstream"
+[ -e "${upstream}/HEAD" ] || {
+	mkdir -p "${upstream}"
+	git clone --bare git@github.com:hovercats/dotfiles "${upstream}"
 }
 
-git --git-dir="$upstream" --work-tree="$HOME" "$@"
+git --git-dir="${upstream}" --work-tree="$HOME" "$@"

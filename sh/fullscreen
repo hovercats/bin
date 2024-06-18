@@ -23,7 +23,7 @@ usage() {
 # this way, there will only be one window in fullscreen at a time, and no window
 # will loose their previous geometry info
 # shellcheck disable=2046
-[ -f "${FSFILE}" ] && wtp $(cat "${FSFILE}") && chwb -s "${BW}" -c "${ACTIVE}" $(pfw)
+[ -f "${FSFILE}" ] && wtp $(cat "${FSFILE}") && chwb -s "${BW}" -c "${ACTIVE}" "$(pfw)"
 
 # if file exist and contain our window id, it means that out window is in
 # fullscreen mode

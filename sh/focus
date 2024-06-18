@@ -4,7 +4,7 @@
 # window focus wrapper that sets borders and can focus next/previous window
 
 # get current window id
-CUR=$(pfw)
+CUR="$(pfw)"
 
 usage() {
     printf "usage: %s $(basename "$0") <next|prev|wid>\n"
@@ -12,15 +12,15 @@ usage() {
 }
 
 case $1 in
-    next) wid="$(lsw | grep -v "$CUR" | sed '1 p;d')" ;;
-    prev) wid="$(lsw | grep -v "$CUR" | sed '$ p;d')" ;;
+    next) wid="$(lsw | grep -v "${CUR}" | sed '1 p;d')" ;;
+    prev) wid="$(lsw | grep -v "${CUR}" | sed '$ p;d')" ;;
     top)  wid="$(lsw | sed '$ p;d')" ;;
     0x*)  wattr "$1" && wid="$1" ;;
     *)    usage ;;
 esac
 
 # exit if we can't find another window to focus
-[ -z "$wid" ] && exit 1
+[ -z "${wid}" ] && exit 1
 
 chwso -r "${wid}" # put it on top of the stack
 wtf      "${wid}" # set focus on it
