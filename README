@@ -1,9 +1,5 @@
 Scripts
 -------
 
-A repo containing some scripts I use.
-
-- sh/
-	- aims for POSIX compliance and correctness
-- rc/
-	- scripts written in plan9's rc
+Various scripts that I use all sorted according to language.
+Aims for correctness and POSIX complance where possible.
