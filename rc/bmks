@@ -1,0 +1,54 @@
+#!/bin/rc
+
+flag e +
+
+file_path=$HOME/etc/bmks
+filename=urls
+bookmarks=$file_path/$filename
+
+fn usage {
+	printf 'Usage: bmks a|c|h|d|l\n'
+}
+
+fn add {
+	test -z $2 || printf 'No url\n'
+	description=`{printf '' | dmenu -c -p 'Description: '}
+	if (test -z $description)
+		printf %s $url >> $bookmarks
+	if not
+		printf '%s ' $"description  -  $url >> $bookmarks
+		sed 's/[ ]*$//' $bookmarks > _ 
+		mv -f _ $bookmarks
+}
+
+fn del {
+	selection=`{cat $bookmarks | dmenu -l 10 -c -p 'Delete: '} 
+	grep -v $"selection $bookmarks > _
+	mv -f _ $bookmarks
+}
+
+fn list {
+	cat $bookmarks
+}
+
+fn go_to {
+	selection=`{cat $bookmarks | dmenu -c -i -l 10 | awk '{print $NF}'}
+	exec $BROWSER $selection
+}
+
+switch($1) {
+	case a
+		url=$2
+		add
+	case c
+		test -d $file_path || mkdir -p $file_path
+		test -f $bookmarks || touch $bookmarks
+	case h
+		usage
+	case d
+		del
+	case l
+		list
+	case *
+		go_to
+}
