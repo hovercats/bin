@@ -3,6 +3,8 @@
 # Simple script to download videos
 # Requires yt-dlp
 
+flag e +
+
 DLDIR=$HOME/usr/vid
 proxy='&local=true'
 

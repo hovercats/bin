@@ -1,3 +1,5 @@
 #!/bin/rc
 
+flag e +
+
 exec st -e catgirl libera

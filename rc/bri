@@ -1,6 +1,8 @@
 #!/bin/rc
 # A simple script to change screen brightness.
 
+flag e +
+
 file=/sys/class/backlight/amdgpu_bl0/brightness
 val=`{cat $file}
 

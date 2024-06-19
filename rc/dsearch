@@ -3,6 +3,8 @@
 # Search the web from dmenu
 # Does not handle URLs
 
+flag e +
+
 ENGINE='https://duckduckgo.com/?q='
 
 # Spaces are not allowed, so substitute them to correct string

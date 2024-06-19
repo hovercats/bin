@@ -1,5 +1,7 @@
 #!/bin/rc
 
+flag e +
+
 # just wait a bit
 while() {
 	 wait $pid

@@ -2,6 +2,8 @@
 
 # A tiny script for launching videos inside Videos dir with mpv
 
+flag e +
+
 cd $HOME/usr/vid
 
 switch($1) {
