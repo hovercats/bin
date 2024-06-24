@@ -3,6 +3,8 @@
 # z3bra - 2014 (c) wtfpl
 # window focus wrapper that sets borders and can focus next/previous window
 
+set -e
+
 # get current window id
 CUR="$(pfw)"
 

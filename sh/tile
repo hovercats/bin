@@ -3,6 +3,8 @@
 # z3bra - 2014 (c) wtfpl
 # arrange windows in a tiled pattern
 
+set -e
+
 # default values for gaps and master area
 PANEL="${PANEL:-0}"
 GAP="${GAP:-20}"

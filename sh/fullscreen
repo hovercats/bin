@@ -4,6 +4,8 @@
 # toggle the fullscreen state of a window
 # depends on: focus
 
+set -e
+
 BW="${BW:-2}"                    # border width
 ACTIVE="${ACTIVE:-0xffffff}"     # active border color
 

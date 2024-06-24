@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 # Original, unmodified script can be found at https://github.com/wmutils/contrib
 
 # Constructs and groups windows into workspaces to switch between using your favorite keybinder.

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 # Based on https://github.com/wmutils/contrib/blob/master/focus_watcher.sh
 # and https://git.disroot.org/root_informatica/wms/src/branch/main/wms_voyeur.sh
 
