@@ -6,8 +6,7 @@ set -e
 
 cd "$HOME"/usr/img
 
-while :
-do
+while :; do
     set -- *
     n=$(echo $# | awk '{srand(); print int(rand()*$0) + 1}')
     eval "wall=\$$n"
