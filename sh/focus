@@ -6,7 +6,7 @@
 set -e
 
 usage() {
-    printf "usage: %s $(basename "$0") <next|prev|wid>\n"
+    printf "usage: %s $(basename "$0") <next|prev|top|wid>\n"
     exit 1
 }
 
