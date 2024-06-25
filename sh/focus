@@ -5,17 +5,14 @@
 
 set -e
 
-# get current window id
-CUR="$(pfw)"
-
 usage() {
     printf "usage: %s $(basename "$0") <next|prev|wid>\n"
     exit 1
 }
 
 case $1 in
-    next) wid="$(lsw | grep -v "${CUR}" | sed '1 p;d')" ;;
-    prev) wid="$(lsw | grep -v "${CUR}" | sed '$ p;d')" ;;
+    next) wid="$(lsw | grep -v $(pfw) | sed '1 p;d')" ;;
+    prev) wid="$(lsw | grep -v $(pfw) | sed '$ p;d')" ;;
     top)  wid="$(lsw | sed '$ p;d')" ;;
     0x*)  wattr "$1" && wid="$1" ;;
     *)    usage ;;
