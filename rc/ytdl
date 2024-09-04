@@ -8,7 +8,7 @@ flag e +
 DLDIR=$HOME/usr/vid
 proxy='&local=true'
 
-if (test -z $1){
+if (~ $#* 0){
 	printf 'No url found\n'
 	exit 1
 }
