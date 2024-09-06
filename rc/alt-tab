@@ -11,7 +11,7 @@ switch($1) {
 		printf 'Usage: n|p\n' && exit 1
 }
 
-if (test -z $"wid) {
+if (~ $#wid 0) {
 	printf 'No window to focus on\n'
 	exit 1
 }
