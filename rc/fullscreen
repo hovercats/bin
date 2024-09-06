@@ -1,0 +1,24 @@
+#!/bin/rc
+
+flag e +
+
+BW=2              # Border width
+ACTIVE=0xffffff   # Active border color
+FSFILE=/tmp/.fwin # Where values are stored
+
+if (~ $#* 0) {
+	printf 'Usage: fullscreen <wid>\n'
+	exit 1
+}
+
+test -f $FSFILE && wtp `{cat $FSFILE} && chwb -s $BW -c $ACTIVE `{pfw}
+
+if (test -f $FSFILE && grep -q $1 $FSFILE) rm -f $FSFILE
+
+if not {
+    wattr xywhi $1 >$FSFILE
+    chwb -s 0 $1
+    wtp `{wattr xywh `{lsw -r}} $1
+}
+
+focus $1
