@@ -3,6 +3,4 @@
 flag e +
 
 # just wait a bit
-while() {
-	 wait $pid
-}
+while() wait $pid
