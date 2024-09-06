@@ -4,6 +4,4 @@
 
 flag e +
 
-cd $HOME/usr/transmission
-
-curl -fLO $1
+curl --create-dirs -O --output-dir $HOME/usr/transmission $1
