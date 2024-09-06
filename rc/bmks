@@ -11,19 +11,19 @@ fn usage {
 }
 
 fn add {
-	test -z $2 || printf 'No url\n'
-	description=`{printf '' | dmenu -c -p 'Description: '}
-	if (test -z $description)
-		printf %s $url >> $bookmarks
-	if not
+	if (! ~ $2 0) description=`{printf '' | dmenu -c -p 'Description: '}
+	if not printf 'No url\n' && exit 1
+	if (~ $#description 0) printf %s $url >> $bookmarks
+	if not {
 		printf '%s ' $"description  -  $url >> $bookmarks
 		sed 's/[ ]*$//' $bookmarks > _ 
 		mv -f _ $bookmarks
+	}
 }
 
 fn del {
 	selection=`{cat $bookmarks | dmenu -l 10 -c -p 'Delete: '} 
-	test ! -z $selection || exit 1
+	if (~ $#selection 0) printf 'No selction made\n' && exit 1
 	grep -v $"selection $bookmarks > _
 	mv -f _ $bookmarks
 }
@@ -34,7 +34,7 @@ fn list {
 
 fn go_to {
 	selection=`{cat $bookmarks | dmenu -c -i -l 10 | awk '{print $NF}'}
-	test ! -z $selection || exit 1
+	if (~ $#selection 0) printf 'No selection make\n' && exit 1
 	exec $BROWSER $selection
 }
 
