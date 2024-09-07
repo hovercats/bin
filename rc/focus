@@ -8,16 +8,16 @@ fn usage {
 }
 
 switch($1) {
-case next 
-	wid=`{lsw | grep -v `{pfw} | sed '1 p;d'}
-case prev 
-	wid=`{lsw | grep -v `{pfw} | sed '$ p;d'}
-case top  
-	wid=`{lsw | sed '$ p;d'}
-case 0x*  
-	wattr $1 && wid=$1
-case *    
-	usage
+	case next 
+		wid=`{lsw | grep -v `{pfw} | sed '1 p;d'}
+	case prev 
+		wid=`{lsw | grep -v `{pfw} | sed '$ p;d'}
+	case top  
+		wid=`{lsw | sed '$ p;d'}
+	case 0x*  
+		wattr $1 && wid=$1
+	case *    
+		usage
 }
 
 # exit if we can't find another window to focus
