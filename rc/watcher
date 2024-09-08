@@ -1,0 +1,16 @@
+#!/bin/rc
+
+flag e +
+
+while(ev=`{read -n 1}) {
+	switch($ev(1)) {
+		case MAP
+			wattr o $ev(2) || focus $ev(2)
+		case CREATE
+			wattr o $ev(2) || focus $ev(2)
+		case UNMAP
+			test ! `{pfw} && focus top
+		case DESTROY
+			test ! `{pfw} && focus top
+	}
+}
