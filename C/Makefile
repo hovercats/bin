@@ -2,7 +2,7 @@
 .SUFFIXES:
 
 CC      = cc
-CFLAGS  = -Wall -pedantic
+CFLAGS  = -Wall -Wextra -pedantic
 LDFLAGS = -s
 
 all: batt
