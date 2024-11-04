@@ -2,11 +2,6 @@
 
 flag e +
 
-fn usage {
-    printf 'Usage: next|prev|top|wid\n'
-    exit 1
-}
-
 switch($1) {
 	case next 
 		wid=`{lsw | grep -v `{pfw} | sed '1 p;d'}
@@ -17,7 +12,8 @@ switch($1) {
 	case 0x*  
 		wattr $1 && wid=$1
 	case *    
-		usage
+		printf 'Usage: next|prev|top|wid\n'
+		exit 1
 }
 
 # exit if we can't find another window to focus
