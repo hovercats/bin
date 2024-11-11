@@ -6,10 +6,6 @@ file_path=$HOME/etc/bmks
 filename=urls
 bookmarks=$file_path/$filename
 
-fn usage {
-	printf 'Usage: bmks a|c|h|d|l\n'
-}
-
 fn add {
 	if (! ~ $2 0) description=`{printf '' | dmenu -c -p 'Description: '}
 	if not printf 'No url\n' && exit 1
@@ -46,7 +42,7 @@ switch($1) {
 		test -d $file_path || mkdir -p $file_path
 		test -f $bookmarks || touch $bookmarks
 	case h
-		usage
+		printf 'Usage: bmks a|c|h|d|l\n'
 	case d
 		del
 	case l
