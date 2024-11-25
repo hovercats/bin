@@ -17,7 +17,7 @@ switch($1) {
 }
 
 # exit if we can't find another window to focus
-if (~ $#wid 0) printf 'No window to focus on\n' && exit 1
+if (~ $#wid 0) printf 'No window to focus on\n' && exit 0
 
 chwso -r $wid # put it on top of the stack
 wtf      $wid # set focus on it
