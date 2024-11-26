@@ -12,7 +12,7 @@ list() {
 }
 
 usage() {
-    echo "`basename $0` [-hl] <alias> [command]"
+    printf 'dm [-hl] <alias> [command]\n'
 }
 
 test -d $sockdir || mkdir -p $sockdir
