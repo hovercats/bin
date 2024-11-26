@@ -12,10 +12,6 @@ fn list {
     exit 0
 }
 
-fn usage {
-    printf 'dm [-hl] <alias> [command]\n'
-}
-
 test -d $sockdir || mkdir -p $sockdir
 
 if (~ $1 -l || ~ $1 -h) {
@@ -23,7 +19,8 @@ if (~ $1 -l || ~ $1 -h) {
 		case -l 
 			list
 		case -h 
-			usage && exit 0
+    		printf 'dm [-hl] <alias> [command]\n'
+    		exit 0
 	}
 }
 
