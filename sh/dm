@@ -7,8 +7,7 @@ sockdir=/tmp/dm
 keyseq=
 
 list() {
-    # change colors, for fun!
-    ls -1 $sockdir
+    find $sockdir -type s
 }
 
 usage() {
