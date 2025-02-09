@@ -16,6 +16,4 @@ if (~ $#* 0){
 if (~ $1 -n) proxy='' && url=$2
 if not url=$1
 
-val=`{yt-dlp -F $url | grep '1080p' | tail -n 1 | awk '{print $1}'}
-if (~ $#val 0) val=bestvideo
-exec yt-dlp -P $DLDIR -f $val+bestaudio $url$proxy
+exec yt-dlp -P $DLDIR -f 'bestvideo[ext=webm][height<=1080]+bestaudio' $url$proxy
