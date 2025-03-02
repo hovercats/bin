@@ -4,11 +4,13 @@
 flag e +
 
 file=/sys/class/backlight/amdgpu_bl0/brightness
-val=`{cat $file}
+tmpfile=/tmp/bri.tmp
 
 switch($1) {
 	case d
-		 printf %s\n $val | awk '{ print $1 - 5 }' >$file
+		 awk <$file '{ print $1 - 5 }' >$tmpfile
+		 cat $tmpfile >$file
 	case i
-		 printf %s\n $val | awk '{ print $1 + 5 }' >$file
+		 awk <$file '{ print $1 + 5 }' >$tmpfile
+		 cat $tmpfile >$file
 }
