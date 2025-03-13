@@ -10,5 +10,5 @@ ENGINE='https://lite.duckduckgo.com/html?q='
 # Spaces are not allowed, so substitute them to correct string
 STRING=`{printf '' | dmenu -c -p 'Search' | sed 's/ /%20/g'}
 
-if (~ $#STRING 0) printf 'Usage: dsearch: query\n' exit 1
+if (~ $#STRING 0) printf 'Usage: dsearch: query\n' && exit 1
 exec $BROWSER $ENGINE$STRING
