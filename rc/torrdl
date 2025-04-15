@@ -1,7 +1,5 @@
 #!/bin/rc
 
-# download .torrent files to a directory where transmission will find them
-
 flag e +
 
 curl --create-dirs -O --output-dir $HOME/usr/transmission $1

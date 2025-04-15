@@ -1,9 +1,5 @@
 #!/bin/sh -e
 
-# Simple script which changes your wallpaper on set amount of time.
-
-set -e
-
 cd "$HOME"/usr/img
 
 while :; do

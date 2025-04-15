@@ -1,5 +1,4 @@
 #!/bin/rc
-# A simple script to change screen brightness.
 
 flag e +
 

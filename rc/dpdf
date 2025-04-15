@@ -1,7 +1,5 @@
 #!/bin/rc
 
-# open pdfs in mupdf with dmenu
-
 flag e +
 
 cd $HOME/usr/doc
