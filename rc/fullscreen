@@ -11,6 +11,9 @@ if (~ $#* 0) {
 	exit 1
 }
 
+# move cursor to top left corner of window avoiding borders getting messed up
+wmp -a `{wattr xy `{pfw}}
+
 # unset fullscreen state if wid is in fullscreen
 test -f $FSFILE && wtp `{cat $FSFILE} && chwb -s $BW -c $ACTIVE `{pfw}
 
