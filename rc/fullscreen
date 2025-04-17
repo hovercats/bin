@@ -11,10 +11,14 @@ if (~ $#* 0) {
 	exit 1
 }
 
+# unset fullscreen state if wid is in fullscreen
 test -f $FSFILE && wtp `{cat $FSFILE} && chwb -s $BW -c $ACTIVE `{pfw}
 
+# test if our wid is in $FSFILE, which means our window is in fullscreen state,
+# then remove the file so we can fullscreen later
 if (test -f $FSFILE && grep -q $1 $FSFILE) rm -f $FSFILE
 
+# put current window in fullscreen, and save needed data about it
 if not {
     wattr xywhi $1 >$FSFILE
     chwb -s 0 $1
