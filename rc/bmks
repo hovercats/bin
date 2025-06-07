@@ -5,6 +5,7 @@ flag e +
 file_path=$HOME/etc/bmks
 filename=urls
 bookmarks=$file_path/$filename
+tmpfile=/tmp/.bmks
 
 fn add {
 	if (! ~ $2 0) description=`{printf '' | dmenu -c -p 'Description: '}
@@ -12,16 +13,16 @@ fn add {
 	if (~ $#description 0) printf %s $url >> $bookmarks
 	if not {
 		printf '%s ' $"description  -  $url >> $bookmarks
-		sed 's/[ ]*$//' $bookmarks > _ 
-		mv -f _ $bookmarks
+		sed 's/[ ]*$//' $bookmarks > $tmpfile
+		mv -f $tmpfile $bookmarks
 	}
 }
 
 fn del {
 	selection=`{cat $bookmarks | dmenu -l 10 -c -p 'Delete: '} 
 	if (~ $#selection 0) printf 'No selction made\n' && exit 1
-	grep -v $"selection $bookmarks > _
-	mv -f _ $bookmarks
+	grep -v $"selection $bookmarks > $tmpfile
+	mv -f $tmpfile $bookmarks
 }
 
 fn list {
