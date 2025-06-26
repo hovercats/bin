@@ -3,7 +3,7 @@
 flag e +
 
 file=/sys/class/backlight/amdgpu_bl0/brightness
-tmpfile=/tmp/bri.tmp
+tmpfile=/tmp/.bri
 
 switch($1) {
 	case d
