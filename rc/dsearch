@@ -4,9 +4,10 @@ flag e +
 
 fn usage {printf 'Usage: dsearch b|d|s|y <query>\n' && exit 1}
 
+# Use dmenu to enter our search query
 fn string {printf '' | dmenu -c -p 'Search'}
 
-# search engines
+# search engine string
 DDG='https://lite.duckduckgo.com/html?q='
 SP='https://www.startpage.com/sp/search?query='
 BC='https://bandcamp.com/search?q='
@@ -15,19 +16,21 @@ YT='https://inv.nadeko.net/search?q='
 switch($1) {
 	case b
 		ENGINE=$BC
-		STRING=`{string | sed 's/ /%2B/g'}
+		STRING=`{string | sed 's/ /%2B/g'} # Replace spaces
 	case d
 		ENGINE=$DDG
-		STRING=`{string | sed 's/ /%20/g'}
+		STRING=`{string | sed 's/ /%20/g'} # Replace spaces
 	case s
 		ENGINE=$SP
-		STRING=`{string | sed 's/ /%20/g'}
+		STRING=`{string | sed 's/ /%20/g'} # Replace spaces
 	case y
 		ENGINE=$YT
-		STRING=`{string | sed 's/ /+/g'}
+		STRING=`{string | sed 's/ /+/g'}   # Replace spaces
 	case *
 		usage
 }
 
+# Exit if our search query is empty
 if (~ $#STRING 0) usage
-exec $"BROWSER $ENGINE$STRING
+
+exec $BROWSER $ENGINE$STRING
