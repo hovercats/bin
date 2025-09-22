@@ -23,9 +23,9 @@ if (test -f $FSFILE && grep -q $1 $FSFILE) rm -f $FSFILE
 
 # put current window in fullscreen, and save needed data about it
 if not {
-    wattr xywhi $1 >$FSFILE
-    chwb -s 0 $1
-    wtp `{wattr xywh `{lsw -r}} $1
+    wattr xywhi $1 >$FSFILE        # Print offsets, dimentions and window id
+    chwb -s 0 $1                   # Remove borders
+    wtp `{wattr xywh `{lsw -r}} $1 # Teleport window into fullscreen
 }
 
 focus $1
