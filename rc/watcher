@@ -2,15 +2,22 @@
 
 flag e +
 
+# Pipe from wew recieve events
 while(ev=`{read -n 1}) {
 	switch($ev(1)) {
 		case MAP
+			# Attempt to focus on the newly mapped window
 			wattr o $ev(2) || focus $ev(2)
 		case CREATE
+			# Attempt to focus on the newly created window
+			# Fallback for unregistered MAP events
 			wattr o $ev(2) || focus $ev(2)
 		case UNMAP
+			# Attempt to regain focus when windows are unmapped
 			test ! `{pfw} && focus top
 		case DESTROY
+			# Attempt to regain focus when windows are killed
+			# Fallback for unregistered UNMAP events
 			test ! `{pfw} && focus top
 	}
 }
