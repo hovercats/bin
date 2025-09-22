@@ -2,5 +2,4 @@
 
 flag e +
 
-for (file in capacity status)
-	cat /sys/class/power_supply/BAT1/$file
+for (file in capacity status) cat /sys/class/power_supply/BAT1/$file
