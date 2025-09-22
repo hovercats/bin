@@ -2,7 +2,7 @@
 
 flag e +
 
-fn usage {printf 'Usage: dsearch b|d|s|y <query>\n' && exit 1}
+fn usage {printf 'Usage: dsearch -b|-d|-s|-y <query>\n' && exit 1}
 
 # Use dmenu to enter our search query
 fn string {printf '' | dmenu -c -p 'Search'}
@@ -14,16 +14,16 @@ BC='https://bandcamp.com/search?q='
 YT='https://inv.nadeko.net/search?q='
 
 switch($1) {
-	case b
+	case -b
 		ENGINE=$BC
 		STRING=`{string | sed 's/ /%2B/g'} # Replace spaces
-	case d
+	case -d
 		ENGINE=$DDG
 		STRING=`{string | sed 's/ /%20/g'} # Replace spaces
-	case s
+	case -s
 		ENGINE=$SP
 		STRING=`{string | sed 's/ /%20/g'} # Replace spaces
-	case y
+	case -y
 		ENGINE=$YT
 		STRING=`{string | sed 's/ /+/g'}   # Replace spaces
 	case *
