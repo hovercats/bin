@@ -4,8 +4,10 @@ flag e +
 
 switch($1) {
 	case n
+		# Get next/top window ID
 		wid=`{lsw | grep -v `{pfw} | sed '1 p;d'}
 	case p
+		# Get previous/bottom window ID
 		wid=`{lsw | grep -v `{pfw} | sed '$ p;d'}
 	case *
 		printf 'Usage: n|p\n' && exit 1
@@ -16,6 +18,6 @@ if (~ $#wid 0) {
 	exit 1
 }
 if not {
-	chwso -r $"wid
-	wtf $"wid
+	chwso -r $"wid # Set window on top of stack
+	wtf $"wid      # Put focus on said window
 }
