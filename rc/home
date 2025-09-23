@@ -1,0 +1,16 @@
+#!/bin/rc
+
+flag e +
+
+upstream=$HOME/src/selfmade/dotfiles
+
+if (test -e $upstream/HEAD) {
+	GIT_WORK_TREE=$HOME
+	GIT_DIR=$upstream
+	git $*
+}
+if not {
+	mkdir -p $upstream
+	git clone --bare git@github.com:hovercats/dotfiles $upstream
+}
+
