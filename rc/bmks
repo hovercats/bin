@@ -7,47 +7,31 @@ filename=urls
 bookmarks=$file_path/$filename
 tmpfile=/tmp/.bmks
 
-fn add {
-	if (! ~ $2 0) description=`{printf '' | dmenu -c -p 'Description: '}
-	if not printf 'No url\n' && exit 1
-	if (~ $#description 0) printf %s $url >> $bookmarks
-	if not {
-		printf '%s ' $"description  -  $url >> $bookmarks
-		sed 's/[ ]*$//' $bookmarks > $tmpfile
-		mv -f $tmpfile $bookmarks
-	}
-}
-
-fn del {
-	selection=`{cat $bookmarks | dmenu -l 10 -c -p 'Delete: '} 
-	if (~ $#selection 0) printf 'No selction made\n' && exit 1
-	grep -v $"selection $bookmarks > $tmpfile
-	mv -f $tmpfile $bookmarks
-}
-
-fn list {
-	cat $bookmarks
-}
-
-fn go_to {
-	selection=`{cat $bookmarks | dmenu -c -i -l 10 | awk '{print $NF}'}
-	if (~ $#selection 0) printf 'No selection make\n' && exit 1
-	exec $BROWSER $selection
-}
-
 switch($1) {
 	case a
 		url=$2
-		add
+		if (! ~ $2 0) description=`{printf '' | dmenu -c -p 'Description: '}
+		if not printf 'No url\n' && exit 1
+		if (~ $#description 0) printf %s $url >> $bookmarks
+		if not {
+			printf '%s ' $"description  -  $url >> $bookmarks
+			sed 's/[ ]*$//' $bookmarks > $tmpfile
+			mv -f $tmpfile $bookmarks
+		}
 	case c
 		test -d $file_path || mkdir -p $file_path
 		test -f $bookmarks || touch $bookmarks
 	case h
 		printf 'Usage: bmks a|c|h|d|l\n'
 	case d
-		del
+		selection=`{cat $bookmarks | dmenu -l 10 -c -p 'Delete: '} 
+		if (~ $#selection 0) printf 'No selction made\n' && exit 1
+		grep -v $"selection $bookmarks > $tmpfile
+		mv -f $tmpfile $bookmarks
 	case l
-		list
+		cat $bookmarks
 	case *
-		go_to
+		selection=`{cat $bookmarks | dmenu -c -i -l 10 | awk '{print $NF}'}
+		if (~ $#selection 0) printf 'No selection make\n' && exit 1
+		exec $BROWSER $selection
 }
