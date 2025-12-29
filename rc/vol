@@ -1,0 +1,12 @@
+#!/bin/rc
+
+flag e+
+
+switch($1){
+	case -i
+		tinymix -D 1 set 14 5+
+		tinymix -D 2 set 3 5+
+	case -d
+		tinymix -D 1 set 14 5-
+		tinymix -D 2 set 3 5-
+}
