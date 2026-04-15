@@ -5,7 +5,7 @@ flag e +
 fn usage {printf 'Usage: dsearch -b|-d|-s|-y <query>\n' && exit 1}
 
 # Use dmenu to enter our search query
-fn string {printf '' | dmenu -c -p 'Search'}
+fn string {printf '' | dmenu -p 'Search'}
 
 # search engine string
 DDG='https://lite.duckduckgo.com/html?q='
