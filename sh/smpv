@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# todo
+# [ ] add currently playing to a playlist
+# [ ] add to queue
+# [ ] 'play next' functionality
+# [ ] manipulate playlist
+# 	- loadfile in manpage here is relevant
+# [x] specify playlist
+# - pass under $@
+# [ ] add to current playlist
+# [ ] show current song
+# [x] shuffle
+# 	- just pass this under $@
+# [ ] start in idle?
+# 	- do we need --idle?
+
+socketpath=/tmp/.mpvsocket
+
+case $1 in
+	play)
+		mpv --no-audio-display --input-ipc-server="$socketpath" "$@"
+		;;
+	pause)
+		echo "cycle pause" | nc -UN  "$socketpath"
+		;;
+	next)
+		echo "playlist-next" | nc -UN "$socketpath"
+		;;
+	prev)
+		echo "playlist-prev" | nc -UN "$socketpath"
+		;;
+	*)
+		echo "Error"
+		exit 1
+		;;
+esac
