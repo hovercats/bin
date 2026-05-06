@@ -10,5 +10,5 @@ switch($1) {
 		rm -rf $"sel
 	case *
 		sel=`{find . -type f | awk -F "/" '{print $NF}' | dmenu -i -l 20 -p 'Play:'}
-		exec mpv $"sel
+		exec mpv '--profile=sw-fast' $"sel
 }
