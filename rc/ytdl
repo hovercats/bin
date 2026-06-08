@@ -3,14 +3,10 @@
 flag e +
 
 DLDIR=$HOME/usr/vid
-proxy='&local=true'
 
 if (~ $#* 0){
 	printf 'No url found\n'
 	exit 1
 }
 
-if (~ $1 -n) proxy='' && url=$2
-if not url=$1
-
-exec yt-dlp -P $DLDIR -f 'bv[ext=webm][height<=1080]+ba' $url$proxy
+exec yt-dlp -P $DLDIR -f 'bv[ext=webm][height<=1080]+ba' $url
