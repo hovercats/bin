@@ -1,0 +1,35 @@
+#!/bin/rc
+
+flag e +
+
+sockdir=/tmp/.dm
+keyseq=
+
+test -d $sockdir || mkdir -p $sockdir
+
+if (~ $1 -l || ~ $1 -h) {
+	switch($1) {
+		case -l 
+    		find $sockdir -type s
+    		exit 0
+		case -h 
+    		printf 'dm [-h|-l] <alias> [command]\n'
+    		exit 0
+	}
+}
+
+switch($#*) {
+	case 0 
+		list
+	case 1 
+		method=a
+	case * 
+		method=A
+}
+
+name=$1
+shift
+
+socket=$sockdir/$name
+
+exec dtach -$method $socket -e $keyseq $*
