@@ -9,4 +9,4 @@ if (~ $#* 0){
 	exit 1
 }
 
-exec yt-dlp -P $DLDIR -f 'bv[ext=webm][height<=1080]+ba' $url
+exec yt-dlp -P $DLDIR -f 'bv[ext=webm][height<=1080]+ba' $*
