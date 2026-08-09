@@ -1,0 +1,20 @@
+#!/bin/rc
+
+flag e +
+
+switch($1) {
+	case p
+		howlc lower
+		howlc focus_prev
+		focused=`{howlc get_focus}
+		unfocused=`{howlc list_windows | grep -v $focused}
+		howlc lower $unfocused
+		howlc raise
+	case n
+		howlc lower
+		howlc focus_next
+		focused=`{howlc get_focus}
+		unfocused=`{howlc list_windows | grep -v $focused}
+		howlc lower $unfocused
+		howlc raise
+}
