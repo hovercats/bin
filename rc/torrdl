@@ -1,5 +1,0 @@
-#!/bin/rc
-
-flag e +
-
-curl --create-dirs -O --output-dir $HOME/usr/transmission $1
