@@ -6,10 +6,10 @@ file=/sys/class/backlight/amdgpu_bl0/brightness
 tmpfile=/tmp/.bri
 
 switch($1) {
-	case d
+	case -d
 		 awk <$file '{ print $1 - 5 }' >$tmpfile
 		 cat $tmpfile >$file
-	case i
+	case -i
 		 awk <$file '{ print $1 + 5 }' >$tmpfile
 		 cat $tmpfile >$file
 }

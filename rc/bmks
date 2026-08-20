@@ -8,7 +8,7 @@ bookmarks=$file_path/$filename
 tmpfile=/tmp/.bmks
 
 switch($1) {
-	case a
+	case -a
 		url=$2
 		if (! ~ $2 0) description=`{printf '' | dmenu -p 'Description: '}
 		if not printf 'No url\n' && exit 1
@@ -18,17 +18,17 @@ switch($1) {
 			sed 's/[ ]*$//' $bookmarks > $tmpfile
 			mv -f $tmpfile $bookmarks
 		}
-	case c
+	case -c
 		test -d $file_path || mkdir -p $file_path
 		test -f $bookmarks || touch $bookmarks
-	case h
+	case -h
 		printf 'Usage: bmks a|c|h|d|l\n'
-	case d
+	case -d
 		selection=`{cat $bookmarks | dmenu -l 10 -p 'Delete: '} 
 		if (~ $#selection 0) printf 'No selction made\n' && exit 1
 		grep -v $"selection $bookmarks > $tmpfile
 		mv -f $tmpfile $bookmarks
-	case l
+	case -l
 		cat $bookmarks
 	case *
 		selection=`{cat $bookmarks | dmenu -i -l 10 | awk '{print $NF}'}
