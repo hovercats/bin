@@ -1,0 +1,5 @@
+#!/bin/rc
+
+if (~ $#PAGER 0) PAGER=less
+if (~ $PAGER cat) PAGER=less
+curl -s $1 | webdump -r -b $1 | $PAGER
